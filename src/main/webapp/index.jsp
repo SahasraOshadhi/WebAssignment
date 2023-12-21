@@ -21,55 +21,58 @@
 
 <div class="container">
 
-    <div class="row gy-6">
 
-    </div>
 
 
     <div class="row">
 
         <div class="col-6">
 
-
-
-
-                <img src="studentrec.jpg" class="col-md-6 mx-auto d-block mb-3" alt="...">
+                <br>
+                <img src="studentrec.jpg">
 
         </div>
 
 
     <div class="col-6">
+        <center>
     <form action="${pageContext.request.contextPath}/hello-servlet" name="myForm" method="post">
 
-        <h1>New Student</h1>
+        <br><br>
+        <h2>Register New Student</h2>
+        <br><br>
 
-        <div class="field form-group">
+
+
+        <div class="col-12">
             <label for="StudentID">Student ID: </label><br>
             <input type="text" id="StudentID" class="formElement" name="StudentID" placeholder="Your Student ID" required><br>
-        </div>
+        </div><br>
 
 
-        <div class="field form-group">
+        <div class="col-12">
             <label for="fname">First name: </label><br>
             <input type="text" id="fname" class="formElement" name="fname" placeholder="Your First Name" required><br>
-        </div>
+        </div><br>
 
-        <div class="field form-group">
+        <div class="col-12">
             <label for="lname">Last name: </label><br>
             <input type="text" id="lname" class="formElement" name="lname" placeholder="Your Last Name" required><br>
-        </div>
+        </div><br>
 
 
 
 
 
-        <div class="field form-group">
-            <label for="phone">Phone: </label><br>
+        <div class="col-12">
+            <label for="phone">Phone Num: </label><br>
             <input type="text" id="phone" class="formElement" name="phone" placeholder="Your phone number" required><br><br>
-        </div>
+        </div><br>
 
         <input type="submit" value="SUBMIT" class="btn btn-primary">
+
     </form>
+        </center>
     </div>
 
     </div>
