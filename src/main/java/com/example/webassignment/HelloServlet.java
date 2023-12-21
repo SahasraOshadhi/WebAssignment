@@ -40,7 +40,7 @@ public class HelloServlet extends HttpServlet {
         }
         String fname = request.getParameter("fname");
         String lname = (String) request.getParameter("lname");
-        String NIC = request.getParameter("NIC");
+        String StudentID = request.getParameter("StudentID");
         String phone = request.getParameter("phone");
 
 
@@ -55,7 +55,7 @@ public class HelloServlet extends HttpServlet {
 
 
         id++;
-        File xmlFile = new File(getServletContext().getRealPath("/") + "patient_details.xml");
+        File xmlFile = new File(getServletContext().getRealPath("/") + "student_details.xml");
 
         //To obtain DocumentBuilder instances
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -74,7 +74,7 @@ public class HelloServlet extends HttpServlet {
             }
 
             //add new person element
-            Element personElement = document.createElement("patient");
+            Element personElement = document.createElement("student");
             document.getDocumentElement().appendChild(personElement);
 
             //add child element data
@@ -95,8 +95,8 @@ public class HelloServlet extends HttpServlet {
             personElement.appendChild(ageElement);
 
             //assign email
-            Element emailElement = document.createElement("NIC");
-            emailElement.appendChild(document.createTextNode(NIC));
+            Element emailElement = document.createElement("StudentID");
+            emailElement.appendChild(document.createTextNode(StudentID));
             personElement.appendChild(emailElement);
 
 

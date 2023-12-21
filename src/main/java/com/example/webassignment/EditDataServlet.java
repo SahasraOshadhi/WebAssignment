@@ -34,13 +34,13 @@ public class EditDataServlet extends HttpServlet {
         String id = request.getParameter("id");
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
-        String NIC = request.getParameter("NIC");
+        String StudentID = request.getParameter("StudentID");
         String phone = request.getParameter("phone");
 
 
 
 
-        File xmlFile = new File(getServletContext().getRealPath("/") + "patient_details.xml");
+        File xmlFile = new File(getServletContext().getRealPath("/") + "student_details.xml");
 
         //To obtain DocumentBuilder instances
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -55,7 +55,7 @@ public class EditDataServlet extends HttpServlet {
                 document = documentBuilder.parse(xmlFile);
 
                 // Locate the person element based on id
-                NodeList personList = document.getElementsByTagName("patient");
+                NodeList personList = document.getElementsByTagName("student");
                 for (int i = 0; i < personList.getLength(); i++) {
                     Element personElement = (Element) personList.item(i);
                     String existingId = personElement.getElementsByTagName("id").item(0).getTextContent();
@@ -65,7 +65,7 @@ public class EditDataServlet extends HttpServlet {
                         // Make the necessary changes
                         personElement.getElementsByTagName("fname").item(0).setTextContent(fname);
                         personElement.getElementsByTagName("lname").item(0).setTextContent(lname);
-                        personElement.getElementsByTagName("NIC").item(0).setTextContent(NIC);
+                        personElement.getElementsByTagName("StudentID").item(0).setTextContent(StudentID);
                         personElement.getElementsByTagName("phone").item(0).setTextContent(phone);
 
                         // Save the changes to the XML file
@@ -80,7 +80,7 @@ public class EditDataServlet extends HttpServlet {
                         PrintWriter out = response.getWriter();
                         out.println("<html><body>");
                         out.println("<script type=\"text/javascript\">");
-                        out.println("window.location.href = 'patients.jsp';");  // Redirect to patients.jsp
+                        out.println("window.location.href = 'students.jsp';");  // Redirect to students.jsp
                         out.println("alert('Data saved successfully!!');");
                         out.println("document.getElementById(\"myForm\").reset();");
                         out.println("</script>");

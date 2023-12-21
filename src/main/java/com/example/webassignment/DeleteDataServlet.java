@@ -33,7 +33,7 @@ public class DeleteDataServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         //String fname = request.getParameter("fname");
-        File xmlFile = new File(getServletContext().getRealPath("/") + "patient_details.xml");
+        File xmlFile = new File(getServletContext().getRealPath("/") + "student_details.xml");
         // To obtain DocumentBuilder instances
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         try {
@@ -45,19 +45,19 @@ public class DeleteDataServlet extends HttpServlet {
             if (xmlFile.exists()) {
                 document = documentBuilder.parse(xmlFile);
 
-                NodeList personList = document.getElementsByTagName("patient");
+                NodeList personList = document.getElementsByTagName("student");
                 for (int i = 0; i < personList.getLength(); i++) {
-                    Node patientNode = personList.item(i);
+                    Node studentNode = personList.item(i);
 
-                    if (patientNode.getNodeType() == Node.ELEMENT_NODE) {
-                        Element personElement = (Element) patientNode;
+                    if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
+                        Element personElement = (Element) studentNode;
                         String existingId = personElement.getElementsByTagName("id").item(0).getTextContent();
                        // String existingName = personElement.getElementsByTagName("fname").item(0).getTextContent();
 
 
                         // Assuming you want to delete the person with a specific id
                         if (existingId.equals(id) ) {
-                            patientNode.getParentNode().removeChild(patientNode);
+                            studentNode.getParentNode().removeChild(studentNode);
 
                             // Save the changes to the XML file
                             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -67,14 +67,14 @@ public class DeleteDataServlet extends HttpServlet {
                             transformer.transform(domSource, streamResult);
 
                             // Log statement for debugging
-                            System.out.println("Patient with ID " + id + " deleted.");
+                            System.out.println("Student with ID " + id + " deleted.");
 
                             // Send a response
                             response.setContentType("text/html");
                             PrintWriter out = response.getWriter();
                             out.println("<html><body>");
                             out.println("<script type=\"text/javascript\">");
-                            out.println("window.location.href = 'patients.jsp';");  // Redirect to patients.jsp
+                            out.println("window.location.href = 'students.jsp';");  // Redirect to students.jsp
                             out.println("alert('Data deleted successfully!!');");
                             out.println("</script>");
                             out.println("</body></html>");

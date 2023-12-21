@@ -19,6 +19,14 @@
 <form action="${pageContext.request.contextPath}/editData-servlet" name="myForm" method="post">
 
     <input type="hidden" name="id" value="<%= request.getParameter("id") %>">
+
+
+
+        <div class="field form-group">
+            <label for="StudentID">Student ID: </label><br>
+            <input type="text" id="StudentID" class="formElement" name="StudentID" placeholder="Your Student ID" value="<%= request.getParameter("StudentID") %>"><br>
+        </div>
+
     <div class="field form-group">
     <label for="fname">First Name: </label><br>
     <input type="text" id="fname" class="formElement" name="fname" placeholder="Your First Name" value="<%= request.getParameter("fname") %>"><br>
@@ -30,10 +38,7 @@
     </div>
 
 
-    <div class="field form-group">
-    <label for="NIC">NIC: </label><br>
-    <input type="text" id="NIC" class="formElement" name="NIC" placeholder="Your NIC" value="<%= request.getParameter("NIC") %>"><br>
-    </div>
+
 
 
     <div class="field form-group">

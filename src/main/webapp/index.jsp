@@ -20,9 +20,34 @@
 <% LocalDateTime now = LocalDateTime.now(); %>
 
 <div class="container">
-    <h1>New Student</h1>
 
+    <div class="row gy-6">
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-6">
+
+
+
+
+                <img src="studentrec.jpg" class="col-md-6 mx-auto d-block mb-3" alt="...">
+
+        </div>
+
+
+    <div class="col-6">
     <form action="${pageContext.request.contextPath}/hello-servlet" name="myForm" method="post">
+
+        <h1>New Student</h1>
+
+        <div class="field form-group">
+            <label for="StudentID">Student ID: </label><br>
+            <input type="text" id="StudentID" class="formElement" name="StudentID" placeholder="Your Student ID" required><br>
+        </div>
+
 
         <div class="field form-group">
             <label for="fname">First name: </label><br>
@@ -35,10 +60,7 @@
         </div>
 
 
-        <div class="field form-group">
-            <label for="NIC">NIC: </label><br>
-            <input type="text" id="NIC" class="formElement" name="NIC" placeholder="Your NIC" required><br>
-        </div>
+
 
 
         <div class="field form-group">
@@ -48,6 +70,9 @@
 
         <input type="submit" value="SUBMIT" class="btn btn-primary">
     </form>
+    </div>
+
+    </div>
 
 
 </div>

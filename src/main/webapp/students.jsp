@@ -9,7 +9,7 @@
 
 <%
     // Load the XML file
-    String xmlFilePath = request.getServletContext().getRealPath("/") + "patient_details.xml";
+    String xmlFilePath = request.getServletContext().getRealPath("/") + "student_details.xml";
     File xmlFile = new File(xmlFilePath);
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -19,7 +19,7 @@
     doc.getDocumentElement().normalize();
 
     // Get the list of person elements
-    NodeList nodeList = doc.getElementsByTagName("patient");
+    NodeList nodeList = doc.getElementsByTagName("student");
 %>
 
 <!DOCTYPE html>
@@ -46,9 +46,9 @@
     <thead class="table table-primary">
     <tr>
         <th style="display:none;">ID</th>
+        <th>Student ID</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>NIC</th>
         <th>Phone</th>
         <th></th>
     </tr>
@@ -56,18 +56,18 @@
 
     <!-- Iterate over each person element and display details -->
     <% for (int i = 0; i < nodeList.getLength(); i++) {
-        Node patientNode = nodeList.item(i);
-        if (patientNode.getNodeType() == Node.ELEMENT_NODE) {
-            Element patientElement = (Element) patientNode;
+        Node studentNode = nodeList.item(i);
+        if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
+            Element studentElement = (Element) studentNode;
     %>
 
     <tr>
-        <td style="display:none;"><%= patientElement.getElementsByTagName("id").item(0).getTextContent() %></td>
-        <td><%= patientElement.getElementsByTagName("fname").item(0).getTextContent() %></td>
-        <td><%= patientElement.getElementsByTagName("lname").item(0).getTextContent() %></td>
-        <td><%= patientElement.getElementsByTagName("NIC").item(0).getTextContent() %></td>
-        <td><%= patientElement.getElementsByTagName("phone").item(0).getTextContent() %></td>
-        <td><button class="btn btn-danger" onclick="deleteUser(event, '<%= patientElement.getElementsByTagName("id").item(0).getTextContent() %>', '<%= patientElement.getElementsByTagName("fname").item(0).getTextContent() %>', '<%= patientElement.getElementsByTagName("lname").item(0).getTextContent() %>', '<%= patientElement.getElementsByTagName("NIC").item(0).getTextContent() %>', '<%= patientElement.getElementsByTagName("phone").item(0).getTextContent() %>')">DELETE</button></td>
+        <td style="display:none;"><%= studentElement.getElementsByTagName("id").item(0).getTextContent() %></td>
+        <td><%= studentElement.getElementsByTagName("StudentID").item(0).getTextContent() %></td>
+        <td><%= studentElement.getElementsByTagName("fname").item(0).getTextContent() %></td>
+        <td><%= studentElement.getElementsByTagName("lname").item(0).getTextContent() %></td>
+        <td><%= studentElement.getElementsByTagName("phone").item(0).getTextContent() %></td>
+        <td><button class="btn btn-danger" onclick="deleteUser(event, '<%= studentElement.getElementsByTagName("id").item(0).getTextContent() %>', '<%= studentElement.getElementsByTagName("fname").item(0).getTextContent() %>', '<%= studentElement.getElementsByTagName("lname").item(0).getTextContent() %>', '<%= studentElement.getElementsByTagName("StudentID").item(0).getTextContent() %>', '<%= studentElement.getElementsByTagName("phone").item(0).getTextContent() %>')">DELETE</button></td>
 
     </tr>
 
@@ -77,7 +77,7 @@
 </div>
 
 <script>
-    async function deleteUser(event, id, fname,lname,NIC,phone) {
+    async function deleteUser(event, id, fname,lname,StudentID,phone) {
         event.stopPropagation();
 
 
@@ -85,10 +85,10 @@
                console.log("id: "+id)
                console.log("\nfname: "+fname)
                console.log("\nlname: "+lname)
-               console.log("\nNIC: "+NIC)
+               console.log("\nStudentID: "+StudentID)
                console.log("\nphone: "+phone)
 
-               var url = "${pageContext.request.contextPath}/deleteUserData.jsp?id="+id+"&fname="+fname+"&lname="+lname+"&NIC="+NIC+"&phone="+phone;
+               var url = "${pageContext.request.contextPath}/deleteUserData.jsp?id="+id+"&fname="+fname+"&lname="+lname+"&StudentID="+StudentID+"&phone="+phone;
                window.location.href=url;
 
 
@@ -121,12 +121,12 @@
                 // Do something with the rowData
                 // access individual values like this:
                 var id = rowData[0]
-                var fname = rowData[1];
-                var lname = rowData[2];
-                var NIC = rowData[3];
+                var StudentID = rowData[1];
+                var fname = rowData[2];
+                var lname = rowData[3];
                 var phone = rowData[4];
 
-                var url = "${pageContext.request.contextPath}/editUserData.jsp?id="+id+"&fname="+fname+"&lname="+lname+"&NIC="+NIC+"&phone="+phone;
+                var url = "${pageContext.request.contextPath}/editUserData.jsp?id="+id+"&fname="+fname+"&lname="+lname+"&StudentID="+StudentID+"&phone="+phone;
                 window.location.href=url;
             });
         }

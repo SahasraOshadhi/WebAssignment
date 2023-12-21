@@ -19,7 +19,7 @@
                     <a class="nav-link active" aria-current="page" href="index.jsp">Add Student</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/patients.jsp">Records</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/students.jsp">Records</a>
                 </li>
 
 
