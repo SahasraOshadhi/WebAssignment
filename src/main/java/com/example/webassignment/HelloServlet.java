@@ -45,15 +45,6 @@ public class HelloServlet extends HttpServlet {
 
 
 
-
-
-
-
-
-
-
-
-
         id++;
         File xmlFile = new File(getServletContext().getRealPath("/") + "student_details.xml");
 
